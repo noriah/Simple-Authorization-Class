@@ -8,6 +8,7 @@ $class->login(USER,PASS,KEEP_LOGGED_IN("On" or "Off"));
 To logout, and return to the index
 
 $class->logout();
+
 ----------------------
 
 Flags are defined in the database as a Json Array String.
