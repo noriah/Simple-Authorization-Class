@@ -141,7 +141,7 @@ class Auth{
 			$this->flags = $flags;
 		}
 		if(!isset($this->flags)){
-			if($redirect){$this->redirect("/error/permission.php", "Could Not Load Permission Flags");}else{return false;}
+			if($redirect){$this->redirect("/error/permission.php");}else{return false;}
 		}
 		if(isset($this->flags["root"])){
 			if($this->flags["root"] == true){
@@ -152,12 +152,12 @@ class Auth{
 			if($this->flags["$item"] == true){
 				return true;
 			}else{
-				if($redirect){$this->redirect("/error/permission.php", $errorVar);}else{return false;}
+				if($redirect){$this->redirect("/error/permission.php");}else{return false;}
 			}
 		}else{
-			if($redirect){$this->redirect("/error/permission.php", $errorVar);}else{return false;}
+			if($redirect){$this->redirect("/error/permission.php");}else{return false;}
 		}
-		if($redirect){$this->redirect("/error/permission.php", "An Error Occurred.");}else{return false;}
+		if($redirect){$this->redirect("/error/permission.php");}else{return -1;}
 	}
 	
 	public function createRandomKey($amount){
@@ -168,13 +168,7 @@ class Auth{
 		return $randkey;
 	}
 	
-	private function redirect($address, $message = NULL){
-		if(!is_null($message)){
-			if(session_id() == '') {
-				session_name("session"); session_start();
-			}
-			$_SESSION['errorVar'] = '<div class="error">'.$message.'</div>';
-		}
+	private function redirect($address){
 		header("Location: $address");
 		exit();
 	}
