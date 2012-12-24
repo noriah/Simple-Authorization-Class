@@ -2,11 +2,11 @@ Simple Authorization Class
 ==========================
 
 Class Function:
-`login($user,$pass,$keeplog)`
-`checkLogin($redirect = false, $address = "/login.php")`
-`logout()`
-`removeKey()`
-`userInfo_get($item = NULL)`
+`login($user,$pass,$keeplog)`,
+`checkLogin($redirect = false, $address = "/login.php")`,
+`logout()`,
+`removeKey()`,
+`userInfo_get($item = NULL)`,
 `checkFlag($item = "basic", $redirect = false, $message = false)`
 
 ----------------------
