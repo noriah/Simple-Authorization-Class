@@ -16,7 +16,7 @@
 	}
 	if(isset($loginMessage)):?>
 	<tr>
-		<td colspan="2"><? echo $loginMessage; ?></td>
+		<td colspan="2"><?php echo $loginMessage; ?></td>
 	</tr>
 	<?php endif; ?>
 	<form name="loginform" action="" method="POST">
