@@ -27,7 +27,7 @@ class Auth{
 		}else{
 			$this->key = NULL;
 		}
-    }
+	}
 	
 	public function setKey($key){
 		$this->key = $key;
