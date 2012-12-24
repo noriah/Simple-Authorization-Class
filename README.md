@@ -1,4 +1,4 @@
-Simple-Authorization-Class
+Simple Authorization Class
 ==========================
 
 A Login statement is started with the line
@@ -33,8 +33,9 @@ Browse
 
 If a user has the root flag, that means that they have ALL flags.
 
-You can create as many flags as you want. and to check if a user has a flag you issue the following statement:
+You can create as many flags as you want. To check if a user has a flag you issue the following statement:
 
 $class->checkFlag('FLAG_NAME', REDIRECT_TO_INDEX(true OR false));
 
 If the user has the flag, it will return true. If not, false or if the redirect option is set to true, it will redirect to index.
+It will return -1 if an error occured.
