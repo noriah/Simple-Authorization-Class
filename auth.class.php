@@ -207,7 +207,7 @@ class Auth{
 	private function mysql_get($query)
 	{
 		require($_SERVER['DOCUMENT_ROOT'].'/common/php/MySQL.php');
-		$mscon = new mysqli($dbInfo['server'],$dbInfo['user'],$dbInfo['pass'],$dbs['noriah']);
+		$mscon = new mysqli($dbInfo['server'],$dbInfo['user'],$dbInfo['pass'],$dbs['main']);
 		if ($mscon->connect_errno) {printf("Connect failed: %s\n", $mscon->connect_error); exit();}
 		$infoR = $mscon->query($query);
 		$row = $infoR->fetch_array(MYSQLI_ASSOC);
@@ -218,28 +218,10 @@ class Auth{
 	private function mysql_set($query)
 	{
 		require($_SERVER['DOCUMENT_ROOT'].'/common/php/MySQL.php');
-		$mscon = new mysqli($dbInfo['server'],$dbInfo['user'],$dbInfo['pass'],$dbs['noriah']);
+		$mscon = new mysqli($dbInfo['server'],$dbInfo['user'],$dbInfo['pass'],$dbs['main']);
 		if ($mscon->connect_errno) {printf("Connect failed: %s\n", $mscon->connect_error); exit();}
 		$infoR = $mscon->query($query);
 		$mscon->close();
 	}
-}
-
-function checkIPBan($ip = NULL)
-{
-	if($ip == NULL)
-	{
-		if(!empty($_SERVER['HTTP_CLIENT_IP'])){$ip=$_SERVER['HTTP_CLIENT_IP'];
-		}elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){$ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-		}else{$ip=$_SERVER['REMOTE_ADDR'];}
-	}
-	require($_SERVER['DOCUMENT_ROOT'].'/common/php/MySQL.php');
-	$mscon = new mysqli($dbInfo['server'],$dbInfo['user'],$dbInfo['pass'],$dbs['noriah']);
-	if ($mscon->connect_errno) {printf("Connect failed: %s\n", $mscon->connect_error); exit();}
-	$infoR = $mscon->query("SELECT * FROM ipBan WHERE ip = '".$ip."'");
-	if(empty($infoR)){return false;}
-	$row = $infoR->fetch_array(MYSQLI_ASSOC);
-	$mscon->close();
-	if($row['banned'] == 1){header("Location: /error/ipbanned.html"); exit;}
 }
 ?>
